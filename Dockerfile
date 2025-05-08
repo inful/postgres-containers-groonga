@@ -1,6 +1,6 @@
 # add extensions to cnpg postgresql image: timescaledb, pg_cron
 ARG POSTGRESQL_VERSION=15.3
-ARG EXTENSIONS="timescaledb cron"
+ARG EXTENSIONS="groonga"
 ARG TIMESCALEDB_VERSION=2.11.0
 
 
