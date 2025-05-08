@@ -6,7 +6,22 @@ set -euxo pipefail
 # install extensions
 EXTENSIONS="$@"
 # cycle through extensions list
-for EXTENSION in ${EXTENSIONS}; do    
+for EXTENSION in ${EXTENSIONS}; do
+    # specail case: groonga
+    if [ "$EXTENSION" == "groonga" ]; then
+        # dependencies
+        apt-get install ca-certificates lsb-release wget -y
+        wget https://packages.groonga.org/debian/groonga-apt-source-latest-$(lsb_release --codename --short).deb
+        apt install -y -V ./groonga-apt-source-latest-$(lsb_release --codename --short).deb
+        rm ./groonga-apt-source-latest-$(lsb_release --codename --short).deb
+        apt-get update
+        apt install -y -V postgresql-${PG_MAJOR}-pgdg-pgroonga groonga-tokenizer-mecab
+ 
+        # cleanup
+        apt-get remove apt-transport-https lsb-release wget --auto-remove -y
+        continue
+    fi
+    
     # special case: timescaledb
     if [ "$EXTENSION" == "timescaledb" ]; then
         # dependencies

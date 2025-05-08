@@ -10,7 +10,7 @@ on:
       EXTENSIONS:
         description: 'Postgres extensions to install'
         required: true
-        default: 'cron timescaledb'
+        default: 'groonga'
       TIMESCALEDB_VERSION:
         description: 'TimescaleDB version'
         required: true
