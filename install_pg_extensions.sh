@@ -17,8 +17,9 @@ for EXTENSION in ${EXTENSIONS}; do
         apt-get update
         apt install -y -V postgresql-${PG_MAJOR}-pgdg-pgroonga hunspell-en-us groonga-tokenizer-mecab
         mkdir -p /usr/share/postgresql/${PG_MAJOR}/tsearch_data
-        ln -sf /usr/share/hunspell/en_US.dic /usr/share/postgresql/15/tsearch_data/en_us.dict
-        ln -sf /usr/share/hunspell/en_US.aff /usr/share/postgresql/15/tsearch_data/en_us.aff
+        ln -sf /usr/share/hunspell/en_US.dic /usr/share/postgresql/${PG_MAJOR}/tsearch_data/en_us.dict
+        ln -sf /usr/share/hunspell/en_US.aff /usr/share/postgresql/${PG_MAJOR}/tsearch_data/en_us.aff
+        ln -sf /zulip_english.top /usr/share/postgresql/${PG_MAJOR}/tsearch_data/zulip_english.stop
         # cleanup
         apt-get remove apt-transport-https lsb-release wget --auto-remove -y
         continue

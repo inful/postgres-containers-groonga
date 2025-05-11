@@ -11,6 +11,7 @@ ARG TIMESCALEDB_VERSION
 ENV TIMESCALEDB_VERSION=${TIMESCALEDB_VERSION}
 
 COPY ./install_pg_extensions.sh /
+COPY ./zulip_english.stop /
 # switch to root user to install extensions
 USER root
 RUN \
